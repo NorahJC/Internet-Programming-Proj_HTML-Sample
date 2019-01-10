@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<title>M.A.N. High School Portal Registration</title>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="stylesheet_login.css">
+	<style>
+      /* The Close Button (x) */
+	  .close {
+		  position: absolute;
+		  right: 25px;
+		  top: 0;
+		  color: #000;
+		  font-size: 35px;
+		  font-weight: bold;
+	  }
+      .close:hover,
+	  .close:focus {
+		  color: red;
+	      cursor: pointer;
+	  }
+
+	  /* Add Zoom Animation */
+	  .animate {
+		  -webkit-animation: animatezoom 0.6s;
+		  animation: animatezoom 0.6s
+	  }
+
+	  @-webkit-keyframes animatezoom {
+		  from {-webkit-transform: scale(0)} 
+		  to {-webkit-transform: scale(1)}
+	  }
+				
+	  @keyframes animatezoom {
+		  from {transform: scale(0)} 
+		  to {transform: scale(1)}
+	  }
+	  .toreg{
+	  
+		background-color: #D9EAF3;
+		color: white;
+		padding: 15px;
+		margin: 8px 0;
+		border: none;
+		cursor: pointer;
+		width: 30%;
+		position: relative;
+		top: 50%;
+		left: 25%; 
+	  }
+	  button:hover {
+		opacity: 0.8;
+	  }
+	  
+	</style>
+</head>
+<body>
+
+	<div class="container-fluid-1">
+		<img class = "login-page" src="logo_blue.jpg" alt = "man-hs-logo" border = "0">
+		<hr class = "style-one">
+	</div><div class="container-fluid-2">
+		<h1 style = "text-align:center">Welcome to the M.A.N. High School Learning Portal Registration Site</h1>
+	</div>
+	<script>
+		<!--Logic for choosing proper modal depending on selection on button click-->
+		//Listening to click event on the above hidden div
+		$(document).on('click','#button1',function(){
+		  //Launch the modal on click event
+			var selected = document.getElementById("regid").value == "id01";
+			var selected2 = document.getElementById("regid").value == "id02";
+
+			if (selected)
+				$('#id01').modal();	
+			else if (selected2)
+				$('#id02').modal();	
+			else	
+				document.getElementById("id00");
+				//$('#id00').modal(); //does not exist
+		});
+	</script>
+	<div class= "form_modal" id = "id00">
+		<form class ="modal-content"> <!--action ="login.php"--> 			
+			<div class="imgcontainer">
+			  <img src="logo_off.png" alt="Avatar" class="avatar">
+			</div>
+			<div class="container text-center">
+				<label><b>Create A M.A.N. Account</b></label>
+				<br>
+				<br>
+				<label>Are you a Teacher or a Parent?</label>
+				<br>
+				<select id="regid">
+				<option value="" disabled selected>Select A Type</option>
+				<option value="id02">Teacher</option>
+				<option value="id01">Parent</option>				
+				</select>
+				<button type = "button" id = "button1" data-toggle = "modal" > Submit</button> <!--data-target = "#id01"-->
+
+			</div>	
+		</form>
+	</div>
+	<!-- modal for parent login-->
+	<div class= "form_modal">
+		<form class ="modal-content2" method="POST" action ="login.php"> 
+			<input type="hidden" name = "type" value="parent">
+			<div id="id01" class="modal" role = "dialog">
+			<div class="click-to-open" data-modal="id01">
+			<div class = "modal-content2 animate">
+			<!--button type= "button" class= "close" data-dismiss="modal">&times;</button-->
+			<div class="imgcontainer">
+			    <img src="logo_off.png" alt="Avatar" class="avatar">
+				<span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal" data-dismiss= "id01">&times;</span>
+			</div>
+			<div class="container text-left">
+				<label><b>Create A M.A.N. Parent Account</b></label>
+				<br>
+				<br>
+				<label><b>Full Name</b></label>
+				<br>
+				<input type="text" placeholder="Enter Full Name" name="name" required>
+				<br>
+				<label><b>Username</b></label>
+				<br>
+				<input type="text" placeholder="Enter Username" name="user" required>
+				<br>
+				<label><b>Password</b></label>
+				<br>
+				<input type="password" placeholder="Enter Password" name="psw" required>
+				<br>				
+				<button type="submit" value ="Go to MAN Login">Register</button>
+				<br>
+				<button class = "toreg"><span class="cancel" style = "float: center"><a href="man_register.html">Cancel</a></span></button>
+				<br>
+			</div>
+	    </div>		
+	    </div>
+		</div>
+		</form>
+	</div>
+	<!-- modal for teacher login-->
+	<div class= "form_modal">
+		<form class ="modal-content2" method="POST" action ="login.php"> 
+		<input type="hidden" name = "type" value="teacher">
+		<div id="id02" class="modal">
+		<div class="click-to-open" data-modal="id02" role = "dialog">
+		<div class = "modal-content2 animate">
+			<!--button type= "button" class= "close" data-dismiss="modal">&times;</button-->
+			<div class="imgcontainer">
+			    <img src="logo_off.png" alt="Avatar" class="avatar">
+				<span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal" data-dismiss= "id02">&times;</span>
+			</div>
+			<div class="container text-left">
+				<label><b>Create A M.A.N. Teacher Account</b></label>
+				<br>
+				<br>
+				<label><b>Full Name</b></label>
+				<br>
+				<input type="text" placeholder="Enter Full Name" name="name" required>
+				<br>
+				<label><b>Username</b></label>
+				<br>
+				<input type="text" placeholder="Enter Username" name="user" required>
+				<br>
+				<label><b>Password</b></label>
+				<br>
+				<input type="password" placeholder="Enter Password" name="psw" required>
+				<br>					
+				<button id= "tregbutton" type="submit" value = "Go to MAN Login">Register</button>
+				<br>
+				<button class = "toreg"><span class="cancel" style = "float: center"><a href="man_register.html">Cancel</a></span></button>
+				<br>
+			</div>
+	    </div>		
+	    </div>
+		<div>
+		</form>
+	</div>
+	<footer class="container-fluid" >
+		<hr class = "style-one">
+		<p class = "login-page">Copyright © 2018
+		</p>
+	</footer>	  
+</body>
+</html>
